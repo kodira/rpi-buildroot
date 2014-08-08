@@ -4,11 +4,9 @@
 #
 ################################################################################
 
-SKOLAR_DISPLAY_VERSION = master
-#SKOLAR_DISPLAY_SITE    = $(call github,kodira,skolar-display,$(SKOLAR_DISPLAY_VERSION))
-#SKOLAR_DISPLAY_SITE    = git://git\@github.com\:kodira/skolar-display.git
-SKOLAR_DISPLAY_SITE     = http://kodira.de/dropbox/misc/
-#SKOLAR_DISPLAY_METHOD = git
+SKOLAR_DISPLAY_VERSION     = master
+SKOLAR_DISPLAY_SITE        = git@github.com:kodira/skolar-display.git
+SKOLAR_DISPLAY_SITE_METHOD = git
 
 define SKOLAR_DISPLAY_CONFIGURE_CMDS
     cd $(@D); \
@@ -23,6 +21,8 @@ endef
 define SKOLAR_DISPLAY_INSTALL_TARGET_CMDS
     install -D -m 0755 $(@D)/smartdisplay $(TARGET_DIR)/usr/bin/skolar-display
     install -D -m 0755 package/skolar-display/S90skolar-display $(TARGET_DIR)/etc/init.d/S90skolar-display
+    install -D -m 0755 package/skolar-display/S00splash $(TARGET_DIR)/etc/init.d/S00splash
+    install -D -m 0555 package/skolar-display/skolar-display-splash.png $(TARGET_DIR)/usr/share/pixmaps/skolar-display-splash.png
 endef
 
 $(eval $(generic-package))
