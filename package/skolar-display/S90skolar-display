@@ -1,7 +1,8 @@
 #!/bin/sh
 
 # Check for missing binaries
-SKOLAR_DISPLAY_BIN=/usr/bin/skolar-display
+#/usr/bin/skolar-display
+SKOLAR_DISPLAY_BIN=/usr/bin/skolar-display-start.sh
 test -x $SKOLAR_DISPLAY_BIN || exit 5
 
 export LD_LIBRARY_PATH=/opt/vc/lib
@@ -13,6 +14,7 @@ case "$1" in
         ;;
     stop)
         # Stop execution of events
+	killall skolar-display-start.sh
         killall skolar-display
         ;;
     *)
