@@ -4,12 +4,14 @@
 #
 #############################################################
 
-RPI_USERLAND_VERSION = 2d7cf19
-RPI_USERLAND_SITE = http://github.com/raspberrypi/userland/tarball/$(RPI_USERLAND_VERSION)
+RPI_USERLAND_VERSION = b555474
+RPI_USERLAND_SITE = $(call github,raspberrypi,userland,$(RPI_USERLAND_VERSION))
 RPI_USERLAND_LICENSE = BSD-3c
 RPI_USERLAND_LICENSE_FILES = LICENCE
 RPI_USERLAND_INSTALL_STAGING = YES
 RPI_USERLAND_INSTALL_TARGET = YES
+
+RPI_USERLAND_PROVIDES = libegl libgles libopenmax libopenvg
 
 define RPI_USERLAND_POST_STAGING_CLEANUP
     rm -Rf $(STAGING_DIR)/opt/vc/{bin,sbin}
